@@ -1,0 +1,21 @@
+[package]
+name = "logical_module_program"
+version = "0.1.0"
+edition = "2021"
+#decription = "String to compute logical expressions in modules "
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+# c/c++ dynamic library (not for test)
+# rlib for default dynamic library
+
+
+
+[dependencies]
+regex = "1"
+linked-hash-map = "0.5.6"
+wasm-bindgen = "0.2.87"
