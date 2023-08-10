@@ -14,6 +14,7 @@ use regex::Regex;
 use linked_hash_map::LinkedHashMap;
 
 
+// Simple module to remove all white spaces in string
 #[cfg(test)]
 mod test_user_input_whitespace{
     use super::*;
@@ -28,6 +29,7 @@ mod test_user_input_whitespace{
 
 
 
+// Simple module to print types expression without to confirm no whitespaces
 #[cfg(test)]
 mod test_user_input_type{
     use super::*;
@@ -48,6 +50,7 @@ mod test_user_input_type{
 
 
 
+// Module to confirm choice of user inputted string
 #[cfg(test)]
 mod test_user_input_choice_bool{
     use super::*;
@@ -63,6 +66,7 @@ mod test_user_input_choice_bool{
 
 
 
+// Module to allow for change of input string
 #[cfg(test)]
 mod test_user_input_choice_change{
     use super::*;
@@ -82,6 +86,7 @@ mod test_user_input_choice_change{
 
 
 
+// Module to ensure the imput parameter it type i8 integer
 #[cfg(test)]
 mod test_user_input_parameters_int{
     use super::*;
@@ -98,6 +103,7 @@ mod test_user_input_parameters_int{
 
 
 
+// Module to assign parameters from user inputted string
 #[cfg(test)]
 mod test_user_input_parameters_assign{
     use super::*;
@@ -109,7 +115,7 @@ mod test_user_input_parameters_assign{
         // change exp for different str types
         let reg_exp = Regex::new(r"(?i)(([a-zA-Z][0-9]?)+([_]?[a-zA-Z0-9]+)?)").unwrap();
         let para_hash = user_parameters::assign_user_parameters_hash(reg_exp,exp);
-        println!("For whitespace: {:?}",para_hash);
+        println!("For parameter hash: {:?}",para_hash);
     }
 }
 
@@ -117,26 +123,26 @@ mod test_user_input_parameters_assign{
 
 
 
-
+// Simple module to see if no panic for string accepted for Logical hash creation
 #[cfg(test)]
 mod test_string_logicalop{
     use super::*;
     
-    //#[test] //manual testing
+    #[test]
     fn check_logicalop_created_test() {
         let exp = "(a1a1_a1==6)&&(b_==7)||(c_222>=6)&&(ddd>88)";
         // change exp for different str types
         let mut logical_hash: LinkedHashMap<String, LogicalOp> = LinkedHashMap::new();
         let reg_exp = Regex::new(r"\)([^)]+)\(").unwrap();
-        let para_hash = create_hash_for_logiclop_dictionary(
+        create_hash_for_logiclop_dictionary(
             &reg_exp,exp, &mut logical_hash);
-        println!("For whitespace: {:?}",para_hash);
     }
 }
 
 
 
  
+// Module to produce frue or false if parameter matched expression operation
 #[cfg(test)]
 mod test_parameter_evaluation_bool{
     use super::*;
@@ -162,6 +168,8 @@ mod test_parameter_evaluation_bool{
 
 
 
+
+// Module creates bool for variable parameters matching string expression
 #[cfg(test)]
 mod test_parameter_evaluation_create{
     use super::*;
@@ -189,7 +197,7 @@ mod test_parameter_evaluation_create{
 
 
 
-
+// Module to calculate for module 1 step at a time
 #[cfg(test)]
 mod test_evaluation_final_calculation{
     use super::*;
@@ -210,6 +218,7 @@ mod test_evaluation_final_calculation{
 
 
 
+// Static module to create list from resulting bool value done in modules
 #[cfg(test)]
 mod test_evaluation_final_bool_create{
     use super::*;
@@ -257,6 +266,7 @@ mod test_evaluation_final_bool_create{
 
 
 
+// Module to test if results are same as static pretermined values
 #[cfg(test)]
 mod test_evaluation_final_bool{
     use super::*;
@@ -292,8 +302,8 @@ mod test_evaluation_final_bool{
             expression_logical_list)=
             compute_final_results::compute_main_results(&para_hash, &bool_hash, &logical_hash );
 
-            println!("{},{:?},{:?},{:?}",main_result, 
-            modules_result,expression_mod_bool_list, expression_logical_list);
+            println!("\nConfirming for expression \n\nEesult: {},\nModule_result: {:?},\nSingle_Modules: {:?},list_LogicalOP: {:?}\n",
+            main_result, modules_result, expression_mod_bool_list, expression_logical_list);
 
     }
 }
@@ -301,6 +311,7 @@ mod test_evaluation_final_bool{
 
 
 
+// Module to print results to terminal it resired
 #[cfg(test)]
 mod test_print_module{
     use super::*;
