@@ -4,7 +4,7 @@ use crate::LogicalOp;
 
 
 // fn to compute final results
-pub fn compute_main_results(parameter_hash:&LinkedHashMap<String, i8>,
+pub fn compute_main_results(parameter_hash:&LinkedHashMap<String, f64>,
     bool_hash:&LinkedHashMap<String,bool>,
     logical_hash:&LinkedHashMap<String,LogicalOp>) -> 
     (bool, Vec<bool>, Vec<bool>, Vec<LogicalOp>){

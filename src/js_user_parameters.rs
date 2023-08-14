@@ -58,14 +58,11 @@ pub fn count_my_input_param_js(input:&str)-> i8{
 
 
 
-
-
-
-#[derive(Debug,Serialize)]
+/* #[derive(Debug,Serialize)]
 pub struct Entry {
     key: String,
     value: f64,
-}
+} */
 
 //creates a hash and assigns input array to variables from parameter_input for js
 pub fn assign_user_parameters_js(list: Regex, array: Vec<f64>, expx: &str) -> LinkedHashMap<String, f64> {
@@ -113,8 +110,9 @@ pub fn send_linked_hash_to_vecter_js(para_hash: LinkedHashMap<String, f64>) -> A
 }
 
 
-/*  ////// backup
-pub fn assign_my_input_param_js2(input_str: &str, array:Vec<i8>)->LinkedHashMap<String, bool>{
+
+ 
+pub fn assign_my_input_param_js2(input_str: &str, array:Vec<f64>)->LinkedHashMap<String, bool>{
     let my_array:Vec<f64> = Vec::from(array); 
     let list = RegExpEnum::HashParameterLeftOnly.check_reg_ex().unwrap();
     let my_hash: LinkedHashMap<String, f64> = assign_user_parameters_js(list, my_array ,input_str);
@@ -135,7 +133,7 @@ pub fn assign_my_input_param_js2(input_str: &str, array:Vec<i8>)->LinkedHashMap<
     bool_hash
 
 }
- */
+
 
 
 

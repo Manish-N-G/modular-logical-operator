@@ -165,12 +165,12 @@ mod test_parameter_evaluation_bool{
     fn check_bool_evaluation_test() {
         let exp = vec!["a1a1_a1==6", "b_==7", "c_222>=6", "ddd>88"];
         // change exp for different str types
-        let mut para_hash: LinkedHashMap<String, i8> =LinkedHashMap::new();
+        let mut para_hash: LinkedHashMap<String, f64> =LinkedHashMap::new();
         // Manually insert key-value pairs
-        para_hash.insert("a1a1_a1".to_string(), 6);
-        para_hash.insert("b".to_string(), 5);
-        para_hash.insert("c_222".to_string(), 3);
-        para_hash.insert("ddd".to_string(), 2);
+        para_hash.insert("a1a1_a1".to_string(), 6.0);
+        para_hash.insert("b".to_string(), 5.0);
+        para_hash.insert("c_222".to_string(), 3.0);
+        para_hash.insert("ddd".to_string(), 2.0);
 
         for str in exp{
             let para_bool = evaluate_expression_for_bool(
@@ -192,12 +192,12 @@ mod test_parameter_evaluation_create{
     fn check_parameter_hash_created_test() {
         let exp = "(a1a1_a1==6)&&(b_==7)||(c_222>=6)&&(ddd>88)";
         // change exp for different str types
-        let mut para_hash: LinkedHashMap<String, i8> =LinkedHashMap::new();
+        let mut para_hash: LinkedHashMap<String, f64> =LinkedHashMap::new();
         // Manually insert key-value pairs
-        para_hash.insert("a1a1_a1".to_string(), 5);
-        para_hash.insert("b".to_string(), 6);
-        para_hash.insert("c_222".to_string(), 3);
-        para_hash.insert("ddd".to_string(), 2);
+        para_hash.insert("a1a1_a1".to_string(), 5.0);
+        para_hash.insert("b".to_string(), 6.0);
+        para_hash.insert("c_222".to_string(), 3.0);
+        para_hash.insert("ddd".to_string(), 2.0);
 
         let mut bool_hash: LinkedHashMap<String, bool> = LinkedHashMap::new();
 
@@ -302,12 +302,12 @@ mod test_evaluation_final_bool{
         logical_hash.insert("2".to_string(), LogicalOp::OR);
         logical_hash.insert("3".to_string(), LogicalOp::AND);
 
-        let mut para_hash: LinkedHashMap<String, i8> =LinkedHashMap::new();
+        let mut para_hash: LinkedHashMap<String, f64> =LinkedHashMap::new();
         // where we assign eg a1a1_a1=6 ,b=2, c_222=7, ddd=3
-        para_hash.insert("a1a1_a1".to_string(), 6);
-        para_hash.insert("b".to_string(), 2);
-        para_hash.insert("c_222".to_string(), 7);
-        para_hash.insert("ddd".to_string(), 3);
+        para_hash.insert("a1a1_a1".to_string(), 6.0);
+        para_hash.insert("b".to_string(), 2.0);
+        para_hash.insert("c_222".to_string(), 7.0);
+        para_hash.insert("ddd".to_string(), 3.0);
 
 
         let (main_result,

@@ -7,7 +7,7 @@ use logical_module_program::main_logic_function;
 mod test_main{
     use super::*;
 
-    //#[test] //manual testing
+    #[test] //manual testing
     fn main_function_test() {
         println!("Test of main function");
         main_logic_function();
@@ -18,7 +18,7 @@ mod test_main{
         // ( v_1= =6) && (v_ 2 ==7 )|| ( v _3 >= 6)& &( v_4>8 8)  | |  (v _5 !  = 5)
         // Error: if (a1==6)&&(b1==7)||(c1>=6)&&(d1>88)||(e1!=5  --> incomplete parameters
         // Error: if (a1==6)&&(b1==7)(c1>=6)&&(d1>88)(e1!=5)    --> missing || or &&
-        // Error: if (a1==6)&&(a1==7)(c1>=6)&&(d1>88)(e1!=5)    --> repeated variable names
+        // Error: if (a1==6.)&&(a1==7)(c1>=6)&&(d1>88)(e1!=5)    --> repeated variable names
     }    
 }
 

@@ -2,13 +2,13 @@ use crate::util_dependencies::{Regex,LinkedHashMap};
 use crate::regular_expression_list::RegExpEnum;
 
 // fn to print expression
-pub fn print_for_expression(left:&i8, operator:&&str,right:&i8){
+pub fn print_for_expression(left:&f64, operator:&&str,right:&f64){
     println!("Ckecking for expression:{}{}{}", left, operator,right);
 }
 
 // Expressions to assign operator functions from Regex and String
 pub fn evaluate_expression_for_bool(expression_operator: &str, 
-    parameter_hash:&LinkedHashMap<String, i8>) -> bool {
+    parameter_hash:&LinkedHashMap<String, f64>) -> bool {
 
     let reg_exp_assign = RegExpEnum::HashCenterRightOnly.check_reg_ex().unwrap();
     let reg_exp_param = RegExpEnum::HashParameterLeftOnly.check_reg_ex().unwrap();
@@ -16,7 +16,7 @@ pub fn evaluate_expression_for_bool(expression_operator: &str,
     (reg_exp_assign.captures(expression_operator),reg_exp_param.captures(expression_operator)) {
 
         let str_variable = caps2[1].to_string();
-        let right: i8 = caps[2].parse::<i8>().unwrap();
+        let right: f64 = caps[2].parse::<f64>().unwrap();
         let operator = &caps[1];
 
         let left = if let Some(&value) = parameter_hash.get(&str_variable) { value } 
@@ -46,7 +46,7 @@ pub fn evaluate_expression_for_bool(expression_operator: &str,
 pub fn create_parameter_bool_dictionary(list: &Regex, 
     expression_str: &str, 
     hash_bool: &mut LinkedHashMap<String, bool>,
-    parameter_hash: &LinkedHashMap<String, i8>) {
+    parameter_hash: &LinkedHashMap<String, f64>) {
     
     println!("");
     for cap in list.captures_iter(expression_str) {
