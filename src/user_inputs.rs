@@ -1,10 +1,34 @@
 use crate::util_dependencies::io;
+use wasm_bindgen::prelude::*;
 
+
+/* // user input for client side
+#[wasm_bindgen]
+pub fn enter_input(input: &str) -> String {
+    let user_input = input.trim();
+    user_input.to_string()
+}
+
+
+// fn to enter a string for expression
+#[wasm_bindgen]
+pub fn input_expression_client(input:&str) -> bool {
+        let input_str = remove_whitespace(input);
+        if input_str.is_empty(){
+            return false 
+        } else {
+            return true
+        };
+} */  
+
+
+// for white spaces
+#[wasm_bindgen]
 pub fn remove_whitespace(input: &str) -> String {
     input.chars().filter(|&c| !c.is_whitespace()).collect()
 }
 
-// fn to enter a string for expression
+//checking for input
 pub fn input_expression() -> String {
     loop {
         let mut input_string = String::new();
@@ -27,7 +51,9 @@ pub fn input_expression() -> String {
     }
 }
 
+
 // fn to confirm the user response of expression
+//#[wasm_bindgen]
 pub fn confirm_user_expression() -> bool {
     println!("Is this expression correct(t/f)?");
     let mut input_string = String::new();
@@ -53,6 +79,7 @@ pub fn confirm_user_expression() -> bool {
 }
 
 //fn to validate the response of the user for expression
+#[wasm_bindgen]
 pub fn check_expression(confirm: bool, expression: &str) -> String {
     if confirm {
         println!("You entered: \n{:?}", expression);

@@ -4,13 +4,11 @@
   "files": [
     "logical_module_program_bg.wasm",
     "logical_module_program.js",
-    "logical_module_program_bg.js",
     "logical_module_program.d.ts"
   ],
   "module": "logical_module_program.js",
   "types": "logical_module_program.d.ts",
   "sideEffects": [
-    "./logical_module_program.js",
     "./snippets/*"
   ]
 }

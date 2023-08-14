@@ -17,11 +17,13 @@ pub mod evaluate_bool_result;
 pub mod compute_final_results;
 pub mod print_result;
 pub mod regular_expression_list;
+pub mod js_user_parameters;
 
 // Required of defined types and dependencies inside lib
 pub use crate::logicalop_initialisation::LogicalOp as LogicalOp;
 use crate::util_dependencies::LinkedHashMap;
-use crate::regular_expression_list::RegExp;
+//use crate::regular_expression_list::Reg_Exp;
+use crate::regular_expression_list::RegExpEnum;
 
 
 
@@ -39,14 +41,14 @@ pub fn main_logic_function() {
 
 
     // *****         user parameter block             ******//
-    let reg_exp_for_parameter = RegExp::HashParameterLeftOnly.check_reg_ex().unwrap();
+    let reg_exp_for_parameter = RegExpEnum::HashParameterLeftOnly.check_reg_ex().unwrap();
     let parameter_hash = 
     user_parameters::assign_user_parameters_hash(reg_exp_for_parameter,expression_str);
 
 
     // *****         create hash block             ******//
-    let regular_exp_factors = RegExp::OutsideParenthesis.check_reg_ex().unwrap();
-    let regular_exp_parentesis = RegExp::InsideParenthesis.check_reg_ex().unwrap();
+    let regular_exp_factors = RegExpEnum::OutsideParenthesis.check_reg_ex().unwrap();
+    let regular_exp_parentesis = RegExpEnum::InsideParenthesis.check_reg_ex().unwrap();
     let mut logical_hash: LinkedHashMap<String, LogicalOp> = LinkedHashMap::new();
     let mut bool_hash: LinkedHashMap<String, bool> = LinkedHashMap::new();
     // fn to assess the expressions for Logicical Operators-op and Conditional Operators-exp

@@ -8,6 +8,8 @@ use logical_module_program::hash_bool_parameter_evaluation::*;
 use logical_module_program::evaluate_bool_result::*;
 use logical_module_program::print_result::*;
 use logical_module_program::compute_final_results;
+use logical_module_program::user_parameters::*;
+use logical_module_program::js_user_parameters::*;
 
 
 use regex::Regex;
@@ -29,8 +31,19 @@ mod test_user_input_whitespace{
 
 
 
+
+/* 
+pub fn enter_input(input: & mut String) -> String {
+    io::stdin().read_line(input).expect("Failed to read input");
+    let user_input = input.trim();
+    user_input.to_string()
+}
+ */
+
+
+
 // Simple module to print types expression without to confirm no whitespaces
-#[cfg(test)]
+//#[cfg(test)]
 mod test_user_input_type{
     use super::*;
 
@@ -51,7 +64,7 @@ mod test_user_input_type{
 
 
 // Module to confirm choice of user inputted string
-#[cfg(test)]
+//#[cfg(test)]
 mod test_user_input_choice_bool{
     use super::*;
 
@@ -67,7 +80,7 @@ mod test_user_input_choice_bool{
 
 
 // Module to allow for change of input string
-#[cfg(test)]
+//#[cfg(test)]
 mod test_user_input_choice_change{
     use super::*;
 
@@ -87,7 +100,7 @@ mod test_user_input_choice_change{
 
 
 // Module to ensure the imput parameter it type i8 integer
-#[cfg(test)]
+//#[cfg(test)]
 mod test_user_input_parameters_int{
     use super::*;
 
@@ -104,17 +117,18 @@ mod test_user_input_parameters_int{
 
 
 // Module to assign parameters from user inputted string
-#[cfg(test)]
+//#[cfg(test)]
 mod test_user_input_parameters_assign{
     use super::*;
 
-    //#[test] //manual testing
+    #[test] //manual testing
     fn ckeck_user_assigned_parameters_test() {
         println!("\nUser Input:Enter integer");
-        let exp = "(a1a1_a1==6)&&(b_==7)||(c_222>=6)&&(ddd>88)";
+        let exp = "(a1a1_a1==6)&&(b_==7)||(c_222>=6)&&(ddd>88)||(ddd>88)";
         // change exp for different str types
         let reg_exp = Regex::new(r"(?i)(([a-zA-Z][0-9]?)+([_]?[a-zA-Z0-9]+)?)").unwrap();
         let para_hash = user_parameters::assign_user_parameters_hash(reg_exp,exp);
+        //let para_hash = user_parameters::assign_user_parameters_hash2(r"(?i)(([a-zA-Z][0-9]?)+([_]?[a-zA-Z0-9]+)?)",exp);
         println!("For parameter hash: {:?}",para_hash);
     }
 }
@@ -333,3 +347,34 @@ mod test_print_module{
     }
 }
 
+/////////////////////////////////////////////////////////
+
+/* 
+mod test_for_getting_hash_js{
+    use super::*;
+    #[test]
+    fn test_hash_output(){
+        let input_str = "((a1a1_a1==6)&&(b_==7)||(c_222>=6)&&(ddd>88)||(e>88)";
+        let array = vec![4,2,5,2,7];
+        assign_and_create_param_hash_js(input_str, array);
+        //println!("{:?}",x)
+    }
+}
+
+
+mod test_linked_to_hash_map_js{
+    use super::*;
+    #[test]
+    fn test_linked_hash_to_hash_map(){
+        let mut para_hash: LinkedHashMap<String, i8> =LinkedHashMap::new();
+        // where we assign eg a1a1_a1=6 ,b=2, c_222=7, ddd=3
+        para_hash.insert("a1a1_a1".to_string(), 6);
+        para_hash.insert("b".to_string(), 2);
+        para_hash.insert("c_222".to_string(), 7);
+        para_hash.insert("ddd".to_string(), 3);
+
+        let x = send_linked_hash_to_vecter_js(para_hash);
+        println!("{:?}",x);
+    }
+}
+ */

@@ -1,0 +1,161 @@
+
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Loop Example</title>
+</head>
+<body>
+    <h1>Program for Logical Module function</h1>
+    <h2>Enter String type</h2>
+    <p>(a1a1_a1==6)&&(b_==7)||(c_222>=6)</p>
+    <label for="StringField">Enter the value of Expression:</label>
+    <input type="text" id="StringField" name="StringField" style="width:400px;" required>
+    <button id="startButton">Start Loop</button>
+    <p></p>
+    <span id="resultArea"></span><span id="span_input"></span>
+    <p></p>
+    <div id="output"></div>
+    <button id="nextButton"  style="display: none;">Next</button>  
+    <p id="finished" style="display: none;">Finished!</p>
+    <p id="testing"></p>
+    <p></p>
+    <span id="resultValue"></span><span id="span_value"></span>
+    <p></p>
+    <span id="resultTuple"></span><span id="span_tuple"></span>
+
+    
+
+    <script type="module">
+        import init, { assign_and_create_param_hash_js , enter_input, input_expression_client, count_my_input_param_js, remove_whitespace } from './pkg/logical_module_program.js';
+        //assign_and_create_param_hash_js
+        init().then(() => {
+            var input_str, my_input = "";
+            var currentLoop,my_num = 0;
+            var para_array_values,var_array_names, my_var = [];
+            var num = 2;
+
+            const startButton = document.getElementById("startButton");
+            const nextButton = document.getElementById("nextButton");
+            const finishedText = document.getElementById("finished");
+
+            startButton.addEventListener("click", () => startLoop());
+            nextButton.addEventListener("click", () => getValues());
+            
+
+            function startLoop() {
+                document.getElementById("testing").style.display = "none";
+
+                currentLoop = 0;
+                para_array_values = [];
+                input_str = document.getElementById("StringField").value;
+                document.getElementById("finished").style.display = "none";
+                
+
+                //(a1a1_a1==6)&&(b_==7)||(c_222>=6)&&(ddd>88)||(ddd>88)
+                if (input_expression_client(input_str)) {
+                    resultArea.textContent = `You entered: `;
+                    span_input.textContent = ` ${input_str}`;
+                    my_input = enter_input(remove_whitespace(input_str));
+                    my_num = count_my_input_param_js(my_input);
+                    createInputField();
+                    document.getElementById("output").style.display = "block";
+                } else {
+                    resultArea.textContent = `You entered: `;
+                    span_input.textContent = ` Empty String, enter again`;
+                    document.getElementById("nextButton").style.display = "none";
+                    document.getElementById("br").style.display = "none";
+                    document.getElementById("finished").style.display = "none";
+
+                }
+            }
+            
+            function createInputField() {
+                
+                if (currentLoop < my_num) {
+                    var output = document.getElementById("output");
+                    output.innerHTML = "";
+
+                    document.getElementById("StringField").style.display = "inline";
+                    document.getElementById("nextButton").style.display = "block";
+
+                    var NumField = document.createElement("input");
+                    NumField.type = "number";
+                    NumField.placeholder = "Enter a value"+ (currentLoop + 1);
+                    NumField.id = 'input';
+
+                    var brElement = document.createElement("br")
+                    output.appendChild(NumField);
+                    output.appendChild(brElement);
+                    console.log(4);
+                } else {
+                    document.getElementById("nextButton").style.display = "none";
+                    document.getElementById("br").style.display = "none";
+                    document.getElementById("finished").style.display = "none";
+                    output.innerHTML = "";
+                }
+            }
+
+            
+            function getValues() {
+                document.getElementById("testing").style.display = "inline";
+                var inputValue = document.getElementById("input").value;
+                if (inputValue.trim() === "") {
+                    return;
+                }
+                para_array_values.push(inputValue);
+                
+                currentLoop++;
+                document.getElementById("testing").innerHTML = "value: " + para_array_values + " count: " + currentLoop;
+                if (currentLoop < my_num) {
+                    createInputField();
+                }else {
+                    document.getElementById("nextButton").style.display = "none"; // Hide the Next button
+                    document.getElementById("finished").style.display = "block"; // Show Finished sign
+                    resultValue.textContent = `You Array: `;
+                    span_value.textContent = para_array_values;
+                    console.log("Values entered:", para_array_values);
+                    console.log('Checking for my_input',my_input);
+                    get_result();
+
+                }
+            }
+            console.log("Values entered New:", para_array_values)
+
+            function get_result(){
+
+                console.log("for input+array",my_input, para_array_values);
+                const new_result = assign_and_create_param_hash_js(my_input, para_array_values);
+
+                if (new_result.length == para_array_values.length){
+                    console.log('Result ===', new_result);
+                    get_module_array();
+                }else {
+                    console.log('Error in String entry:Check string');
+                }
+            }
+
+            function get_module_arrays(){
+                let mod_array = xxx();
+                let final_array = yyy();
+            }
+/*                  if (Array.isArray(new_result)) {
+                    const convertedResult = new_result.map(item => {
+                        return { key: item.key, value: item.value };
+                    });
+                    console.log('converted result', convertedResult);
+                } else {
+                    console.log('converted error');
+                }  */
+
+            //(a1a1_a1==6)&&(b_==7)||(c_222>=6)&&(ddd>88)||(ddd>88)
+            //(a1a1_a1==6)&&(b_==7)||(c_222>=6)
+
+            console.log(5);
+            console.log("Values entered New:", para_array_values)
+        });
+    </script>
+</body>
+</html> 
+
+
+

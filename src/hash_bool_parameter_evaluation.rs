@@ -1,5 +1,5 @@
 use crate::util_dependencies::{Regex,LinkedHashMap};
-use crate::regular_expression_list::RegExp;
+use crate::regular_expression_list::RegExpEnum;
 
 // fn to print expression
 pub fn print_for_expression(left:&i8, operator:&&str,right:&i8){
@@ -10,8 +10,8 @@ pub fn print_for_expression(left:&i8, operator:&&str,right:&i8){
 pub fn evaluate_expression_for_bool(expression_operator: &str, 
     parameter_hash:&LinkedHashMap<String, i8>) -> bool {
 
-    let reg_exp_assign = RegExp::HashCenterRightOnly.check_reg_ex().unwrap();
-    let reg_exp_param = RegExp::HashParameterLeftOnly.check_reg_ex().unwrap();
+    let reg_exp_assign = RegExpEnum::HashCenterRightOnly.check_reg_ex().unwrap();
+    let reg_exp_param = RegExpEnum::HashParameterLeftOnly.check_reg_ex().unwrap();
     if let (Some(caps),Some(caps2)) = 
     (reg_exp_assign.captures(expression_operator),reg_exp_param.captures(expression_operator)) {
 
