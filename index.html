@@ -45,8 +45,6 @@
         <h3 style ="display:inline-block;">Final Results:  </h3><h3 style ="display:inline-block;" id="final_result"></h3>
     </div>
     
-
-
     
 
     <script type="module">
@@ -67,8 +65,7 @@
                 currentLoop = 0;
                 para_array_values = [];
                 input_str = document.getElementById("StringField").value;
-                document.getElementById("finished").style.display = "none";
-                document.getElementById("input_testing").style.display = "none"; //
+                finished.style.display = input_testing.style.display = "none";
 
                 //(a1a1_a1==6)&&(b_==7)||(c_222>=6)&&(ddd>88)||(ddd>88)
                 if (input_expression_client(input_str)) {
@@ -79,14 +76,14 @@
 
                     createInputField();
                     document.getElementById("output").style.display = "block";
+                    document.getElementById("input_testing").innerHTML = "";
                 } else {
                     resultArea.textContent = `You Entered: `;
                     span_input.textContent = ` Empty String, enter again`;
-                    document.getElementById("nextButton").style.display = "none";
-                    document.getElementById("finished").style.display = "none";
-                    document.getElementById("ResultLabel").style.display = "none";
-                    document.getElementById("resultError").style.display = "none";
-                    document.getElementById("input_error").style.display = "none";
+                    document.getElementById("input_testing").innerHTML = "";
+
+                    const startloop_elements = [input, nextButton, finished, ResultLabel, resultError];
+                    startloop_elements.forEach(element => element.style.display = "none");
                 }
             }
             
@@ -98,22 +95,18 @@
 
                     document.getElementById("StringField").style.display = "inline";
                     document.getElementById("nextButton").style.display = "block";
-                    document.getElementById("ResultLabel").style.display = "none";
-                    document.getElementById("var_param_id_res").style.display = "none";
-                    document.getElementById("logicalop_arr_id_res").style.display = "none";
-                    document.getElementById("bool_param_arr_id_res").style.display = "none";
-                    document.getElementById("resultError").style.display = "none";
-                    document.getElementById("span_error").style.display = "none";
+
+                    const create_elements = [ResultLabel, var_param_id_res, logicalop_arr_id_res, bool_param_arr_id_res, resultError, span_error];
+                    create_elements.forEach(element => element.style.display = "none");
 
                     var NumField = document.createElement("input");
                     NumField.type = "number";
-                    NumField.placeholder = "Enter a value"+ (currentLoop + 1);
+                    NumField.placeholder = "Enter a variable value"+ (currentLoop + 1);
                     NumField.id = 'input';
                     output.appendChild(NumField);
 
                 } else {
-                    document.getElementById("nextButton").style.display = "none";
-                    document.getElementById("finished").style.display = "none";
+                    nextButton.style.display = finished.style.display = "none";
                     output.innerHTML = "";
                 }
             }
@@ -132,9 +125,8 @@
                 if (currentLoop < my_num) {
                     createInputField();
                 }else {
-                    document.getElementById("nextButton").style.display = "none"; // Hide the Next button
+                    nextButton.style.display = input.style.display = "none";
                     document.getElementById("finished").style.display = "block"; // Show Finished sign
-
                     console.log("Values entered:", para_array_values);
                     console.log("Checking for my_input",my_input);
                     get_result();
@@ -177,16 +169,15 @@
                         });
                     }
                     document.getElementById("ResultLabel").style.display = "";
-                    document.getElementById("var_param_id_res").style.display = "inline-block";
-                    document.getElementById("logicalop_arr_id_res").style.display = "inline-block";
-                    document.getElementById("bool_param_arr_id_res").style.display = "inline-block";
+                    const get_result_elements = [var_param_id_res, logicalop_arr_id_res, bool_param_arr_id_res];
+                    get_result_elements.forEach(element => element.style.display = "inline-block");
                     get_module_arrays(my_input, para_array_values, var_param, logicalop_arr, bool_param_arr);
                 
                 }else {
                     resultError.textContent = `Error: `;
                     span_error.textContent = ` Incorrect String Syntax, check string`;
-                    document.getElementById("resultError").style.display = "";
-                    document.getElementById("span_error").style.display = "";
+                    resultError.style.display = span_error.style.display = "";
+
                 }
 
             }
@@ -194,14 +185,10 @@
             function get_module_arrays(my_input, para_array_values, var_param, logicalop_arr, bool_param_arr){
                 let mixed_result_array = result_function(my_input, para_array_values);
                 console.log("Final reuslt ==",mixed_result_array);
-                //print_module();
-                
                 
                 const outputDiv = document.getElementById('output_result');
                 outputDiv.innerHTML = '';
-
                 let previousOutput = ``;
-
                 for (let i = 0; i < mixed_result_array[1].length - 1; i++) {
                     const outputStr = `${i+1}. For [${i === 0 ? bool_param_arr[i].key : `Module Output(${i})`}]  Logical:${logicalop_arr[i].value} [${bool_param_arr[i + 1].key}] = Module Output(${i+1}): ${mixed_result_array[1][i]}`;
                     const para = document.createElement('p');
@@ -219,29 +206,7 @@
                 const finalDiv = document.getElementById('final_result');
                 finalDiv.textContent = `${mixed_result_array[0][0]}`;
             
-
-/*                 const outputDiv = document.getElementById('output_result');
-                outputDiv.innerHTML = '';
-
-                for (let i = 0; i < mixed_result_array[1].length; i++) {
-                const outputStr = `${i+1}. For [${bool_param_arr[i].key}]  Logical:${logicalop_arr[i].value}  [${bool_param_arr[i + 1].key}] = Result Output(module${i+1}): ${mixed_result_array[1][i]}`;
-                const para = document.createElement('p');
-                para.textContent = outputStr;
-                outputDiv.appendChild(para); 
-                } */
             }
-
-            //function print_module(){
-                    /* println!("{}\t {}\t {}\t = \t{}",
-                    cloned_exp[i], cloned_op[i], cloned_exp[i+1], res) */
-
-
-
-
-
-               // } 
-
-
             //(a1a1_a1==6)&&(b_==7)||(c_222>=6)&&(ddd>88)||(ddd>88)
             //(a1a1_a1==6)&&(b_==7)||(c_222>=6)
 
