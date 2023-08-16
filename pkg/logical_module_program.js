@@ -4,20 +4,15 @@ const heap = new Array(128).fill(undefined);
 
 heap.push(undefined, null, true, false);
 
-function getObject(idx) { return heap[idx]; }
-
 let heap_next = heap.length;
 
-function dropObject(idx) {
-    if (idx < 132) return;
-    heap[idx] = heap_next;
-    heap_next = idx;
-}
+function addHeapObject(obj) {
+    if (heap_next === heap.length) heap.push(heap.length + 1);
+    const idx = heap_next;
+    heap_next = heap[idx];
 
-function takeObject(idx) {
-    const ret = getObject(idx);
-    dropObject(idx);
-    return ret;
+    heap[idx] = obj;
+    return idx;
 }
 
 const cachedTextDecoder = (typeof TextDecoder !== 'undefined' ? new TextDecoder('utf-8', { ignoreBOM: true, fatal: true }) : { decode: () => { throw Error('TextDecoder not available') } } );
@@ -38,13 +33,18 @@ function getStringFromWasm0(ptr, len) {
     return cachedTextDecoder.decode(getUint8Memory0().subarray(ptr, ptr + len));
 }
 
-function addHeapObject(obj) {
-    if (heap_next === heap.length) heap.push(heap.length + 1);
-    const idx = heap_next;
-    heap_next = heap[idx];
+function getObject(idx) { return heap[idx]; }
 
-    heap[idx] = obj;
-    return idx;
+function dropObject(idx) {
+    if (idx < 132) return;
+    heap[idx] = heap_next;
+    heap_next = idx;
+}
+
+function takeObject(idx) {
+    const ret = getObject(idx);
+    dropObject(idx);
+    return ret;
 }
 
 function debugString(val) {
@@ -176,12 +176,6 @@ function getInt32Memory0() {
     return cachedInt32Memory0;
 }
 /**
-*/
-export function main_logic_function() {
-    wasm.main_logic_function();
-}
-
-/**
 * @param {string} input
 * @returns {string}
 */
@@ -256,10 +250,41 @@ export function assign_and_create_param_hash_js(input_str, array) {
 }
 
 /**
+* @param {string} input_str
 * @returns {Array<any>}
 */
-export function test_new() {
-    const ret = wasm.test_new();
+export function get_logical_hash_array_js(input_str) {
+    const ptr0 = passStringToWasm0(input_str, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ret = wasm.get_logical_hash_array_js(ptr0, len0);
+    return takeObject(ret);
+}
+
+/**
+* @param {string} input_str
+* @param {Float64Array} array
+* @returns {Array<any>}
+*/
+export function get_bool_hash_array_js(input_str, array) {
+    const ptr0 = passStringToWasm0(input_str, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ptr1 = passArrayF64ToWasm0(array, wasm.__wbindgen_malloc);
+    const len1 = WASM_VECTOR_LEN;
+    const ret = wasm.get_bool_hash_array_js(ptr0, len0, ptr1, len1);
+    return takeObject(ret);
+}
+
+/**
+* @param {string} input_str
+* @param {Float64Array} array
+* @returns {Array<any>}
+*/
+export function result_function(input_str, array) {
+    const ptr0 = passStringToWasm0(input_str, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    const len0 = WASM_VECTOR_LEN;
+    const ptr1 = passArrayF64ToWasm0(array, wasm.__wbindgen_malloc);
+    const len1 = WASM_VECTOR_LEN;
+    const ret = wasm.result_function(ptr0, len0, ptr1, len1);
     return takeObject(ret);
 }
 
@@ -310,6 +335,12 @@ export function check_expression(confirm, expression) {
     }
 }
 
+/**
+*/
+export function main_logic_function() {
+    wasm.main_logic_function();
+}
+
 function handleError(f, args) {
     try {
         return f.apply(this, args);
@@ -352,16 +383,16 @@ async function __wbg_load(module, imports) {
 function __wbg_get_imports() {
     const imports = {};
     imports.wbg = {};
-    imports.wbg.__wbindgen_object_drop_ref = function(arg0) {
-        takeObject(arg0);
+    imports.wbg.__wbindgen_number_new = function(arg0) {
+        const ret = arg0;
+        return addHeapObject(ret);
     };
     imports.wbg.__wbindgen_string_new = function(arg0, arg1) {
         const ret = getStringFromWasm0(arg0, arg1);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_number_new = function(arg0) {
-        const ret = arg0;
-        return addHeapObject(ret);
+    imports.wbg.__wbindgen_object_drop_ref = function(arg0) {
+        takeObject(arg0);
     };
     imports.wbg.__wbg_new_898a68150f225f2e = function() {
         const ret = new Array();
@@ -369,6 +400,10 @@ function __wbg_get_imports() {
     };
     imports.wbg.__wbg_new_b51585de1b234aff = function() {
         const ret = new Object();
+        return addHeapObject(ret);
+    };
+    imports.wbg.__wbg_of_195c986fbfdd6637 = function(arg0, arg1) {
+        const ret = Array.of(getObject(arg0), getObject(arg1));
         return addHeapObject(ret);
     };
     imports.wbg.__wbg_push_ca1c26067ef907ac = function(arg0, arg1) {
