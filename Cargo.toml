@@ -1,7 +1,7 @@
 [package]
 name = "logical_module_program"
 version = "0.1.0"
-authors =["Manish Naresh Gondhkar"]
+authors = ["K.AOUADI <karim.aouadi@moebiusanalytics.com>", "Manish Naresh Gondhkar"]
 edition = "2021"
 description = "String to compute logical expressions in modules"
 
