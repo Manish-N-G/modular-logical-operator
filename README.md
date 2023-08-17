@@ -15,7 +15,8 @@ Main Result (eg)= **[true]**
 
 This code is written in [Rust](https://www.rust-lang.org/). We convert to WebAssembly wasm code with the help 
 of [wasm-bindgen](https://rustwasm.github.io/wasm-bindgen/) and [wasm-pack](https://rustwasm.github.io/wasm-pack/book/introduction.html).
-The result can be gotten but the **rust lib**, **html client** interface and **nodejs** CLI.
+
+The result can be gotten but the **rust CLI for our lib**, **html client on the browser** interface and **nodejs CLI** CLI.
 
 
 ## Getting Started and Instillation
@@ -105,9 +106,59 @@ Also install nodejs's package manager npm
 ## Running the tests
 
 **Important**: Wasm-pack with wasm-bindgen allows or to create one 1 working environment at a time.
-To run code
+
+### 1: Rust Case: Implementation for Rust:
+
+Inside root directory, run the command to initialise the environment
+
+    cargo build
+
+To run the lib.rs entry file in rust, we can run this command:
+
+    cargo run
+
+**This allows us to run the rust executable in CLI**
+
+### 2: Client Side Html Case: Implementation for Browser Interface:
+
+Inside root directory, to run the project on client side on browser, we run using wasm-pack.
+
+Wasm-pack build the necessary files for our program to interface it with Javascript. The **#[wasm-bindgen]** tag, converts the functions in rust code, to be able to export it in Javascript. Follow the instruction
+
+    wasm-pack build --target web
+
+The result is wasm-pack creates a **pkg** file that allows us to export wasm generated code for **web** build to Javascript
+
+In the root directory, run the localhost for the index.html file. One quick way to do this is by the following
+
+    python3 -m http.server
+
+Now you can intereact with the browser.
+
+**Important** : We need to run **wasm-pack build --target web** everytime we transition from Nodejs environment
+
+### 3: Nodejs Case: Implementation for Nodejs CLI:
+
+The nodejs entry point file for this code is node_file.js. To run the project for nodejs, we run using wasm-pack.
+
+Using Wasm-pack, same as above, for nodejs. Follow the instruction
+
+    wasm-pack build --target nodejs
+
+The result is wasm-pack creates a **pkg** file that allows us to export wasm generated code for **nodejs** build to Javascript
+
+For interaction in node CLI, run the following code
+
+    node node_file.js
+
+Now you can intereact with the CLI terminal
+
+**Important** : We need to run **wasm-pack build --target web** everytime we transition from web environment
+
 
 ### Sample Tests
+
+
 
 Explain what these tests test and why
 
