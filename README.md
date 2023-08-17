@@ -171,6 +171,7 @@ Now you can intereact with the CLI terminal
 
 ## Diagram of Architecture
 
+![555](https://github.com/Manish-N-G/modular-logical-operator/assets/136582364/69e1846b-f912-4776-a5cf-b15a51f7def4)
 
 ## Authors
 
