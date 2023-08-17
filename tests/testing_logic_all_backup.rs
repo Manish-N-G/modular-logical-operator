@@ -31,17 +31,6 @@ mod test_user_input_whitespace{
 
 
 
-
-/* 
-pub fn enter_input(input: & mut String) -> String {
-    io::stdin().read_line(input).expect("Failed to read input");
-    let user_input = input.trim();
-    user_input.to_string()
-}
- */
-
-
-
 // Simple module to print types expression without to confirm no whitespaces
 //#[cfg(test)]
 mod test_user_input_type{
@@ -347,34 +336,7 @@ mod test_print_module{
     }
 }
 
-/////////////////////////////////////////////////////////
-
-/* 
-mod test_for_getting_hash_js{
-    use super::*;
-    #[test]
-    fn test_hash_output(){
-        let input_str = "((a1a1_a1==6)&&(b_==7)||(c_222>=6)&&(ddd>88)||(e>88)";
-        let array = vec![4,2,5,2,7];
-        assign_and_create_param_hash_js(input_str, array);
-        //println!("{:?}",x)
-    }
-}
 
 
-mod test_linked_to_hash_map_js{
-    use super::*;
-    #[test]
-    fn test_linked_hash_to_hash_map(){
-        let mut para_hash: LinkedHashMap<String, i8> =LinkedHashMap::new();
-        // where we assign eg a1a1_a1=6 ,b=2, c_222=7, ddd=3
-        para_hash.insert("a1a1_a1".to_string(), 6);
-        para_hash.insert("b".to_string(), 2);
-        para_hash.insert("c_222".to_string(), 7);
-        para_hash.insert("ddd".to_string(), 3);
 
-        let x = send_linked_hash_to_vecter_js(para_hash);
-        println!("{:?}",x);
-    }
-}
- */
+

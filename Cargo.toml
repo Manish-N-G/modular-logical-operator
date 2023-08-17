@@ -1,8 +1,10 @@
 [package]
 name = "logical_module_program"
 version = "0.1.0"
+authors =["Manish Naresh Gondhkar"]
 edition = "2021"
-#decription = "String to compute logical expressions in modules "
+description = "String to compute logical expressions in modules"
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -10,7 +12,7 @@ edition = "2021"
 [lib]
 crate-type = ["cdylib", "rlib"]
 
-# c/c++ dynamic library (not for test)
+# c/c++ dynamic library (not for test)  C compatible dynamic library
 # rlib for default dynamic library
 
 
@@ -20,7 +22,21 @@ regex = "1"
 linked-hash-map = "0.5.6"
 wasm-bindgen = "0.2.87"
 js-sys = "0.3"
-serde = { version = "1.0", features = ["derive"] }
-serde-wasm-bindgen = "0.4"
-serde_json = "1.0.104"
 
+# The `console_error_panic_hook` crate provides better debugging of panics by
+# logging them with `console.error`. This is great for development, but requires
+# all the `std::fmt` and `std::panicking` infrastructure, so isn't great for
+# code size when deploying.
+# console_error_panic_hook = { version = "0.1.7", optional = true }
+
+
+
+#Uncomment for mac users only
+#[package.metadata.wasm-pack.profile.release]
+#wasm-opt = false
+
+#optamised code for release only if required
+#[profile.release]
+#lto = true
+# Tell `rustc` to optimize for small code size.
+#opt-level = "s"

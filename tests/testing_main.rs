@@ -1,6 +1,5 @@
-#![allow(unused)]
+//#![allow(unused)]
 use logical_module_program::main_logic_function;
-
 
 
 //#[cfg(test)] // manual testing

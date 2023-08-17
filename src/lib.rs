@@ -18,11 +18,11 @@ pub mod compute_final_results;
 pub mod print_result;
 pub mod regular_expression_list;
 pub mod js_user_parameters;
+//pub mod utils; // for panic hooks
 
 // Required of defined types and dependencies inside lib
 pub use crate::logicalop_initialisation::LogicalOp as LogicalOp;
 use crate::util_dependencies::LinkedHashMap;
-//use crate::regular_expression_list::Reg_Exp;
 use crate::regular_expression_list::RegExpEnum;
 
 

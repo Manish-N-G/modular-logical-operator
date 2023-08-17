@@ -1,9 +1,7 @@
-//use wasm_bindgen::prelude::*;
 use std::fmt;
 
 
 //Values for Initialising LogicalOp for AND and OR
-//#[wasm_bindgen]
 #[derive(Debug, Clone)]
 pub enum LogicalOp {
     AND,
@@ -21,7 +19,6 @@ impl fmt::Display for LogicalOp {
 }
 
 // Evaluate string values with match str with Logic
-//#[wasm_bindgen]
 pub fn evaluate_expression_for_logicalop(expression: &str) -> LogicalOp {
     match expression {
         "||" => LogicalOp::OR,
