@@ -103,9 +103,9 @@ Also install nodejs's package manager npm
 #### From the following, all dependencies to run the environment is installed. We can now clone this project and run our code.
 
 
-## Running the tests
+## Running the Code
 
-**Important**: Wasm-pack with wasm-bindgen allows or to create one 1 working environment at a time.
+- **Important**: Wasm-pack with wasm-bindgen allows or to create one 1 working environment at a time.
 
 ### 1: Rust Case: Implementation for Rust:
 
@@ -135,7 +135,7 @@ In the root directory, run the localhost for the index.html file. One quick way 
 
 Now you can intereact with the browser.
 
-**Important** : We need to run **wasm-pack build --target web** everytime we transition from Nodejs environment
+- **Important** : We need to run **wasm-pack build --target web** everytime we transition from Nodejs environment
 
 ### 3: Nodejs Case: Implementation for Nodejs CLI:
 
@@ -153,22 +153,23 @@ For interaction in node CLI, run the following code
 
 Now you can intereact with the CLI terminal
 
-**Important** : We need to run **wasm-pack build --target web** everytime we transition from web environment
+- **Important** : We need to run **wasm-pack build --target web** everytime we transition from web environment
 
 
-### Sample Tests
+### Browser Interface:
 
+![111](https://github.com/Manish-N-G/modular-logical-operator/assets/136582364/796dba8e-fe6b-4e85-8d63-1e98e7a6cf9c)
 
+### Node Interface:
 
-Explain what these tests test and why
+![222](https://github.com/Manish-N-G/modular-logical-operator/assets/136582364/6f99401c-6987-4198-8220-000df32079d1)
+![333](https://github.com/Manish-N-G/modular-logical-operator/assets/136582364/fec64d2f-3489-4270-b546-6beda7a08036)
 
-    Give an example
+### Rust Interface:
 
-### Style test
+![444](https://github.com/Manish-N-G/modular-logical-operator/assets/136582364/2f05d023-c37c-45f1-8eb2-88f9e8c78a11)
 
-Checks if the best practices and the right coding style has been used.
-
-    Give an example
+## Diagram of Architecture
 
 
 ## Authors
