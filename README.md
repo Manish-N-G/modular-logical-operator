@@ -1,9 +1,17 @@
-# Project Title
+# Logic Module Program
 
-One Paragraph of the project description
+This project computes the logical and arithmetic operators for a string to individual modules:
+We take a string input like (a==1)||(b1>3)&&(c_1!=5)||(d<=4) and gets the user parameters for the variables a,b1,c_1 and d.
+The result is broken down into modules and then computed for them.
+Ex: a==1: ,Enter value of a=5. 
+Result for the modules (eg)= [false, true, false, true]
+Main Result (eg)= [true]
 
-Initially appeared on
-[gist](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2). But the page cannot open anymore so that is why I have moved it here.
+This code is written in Rust. We convert to WebAssembly wasm code with the help of wasm-bindgen and wasm-pack.
+The result can be gotten but the rust lib, html client interface and nodejs CLI.
+
+//Initially appeared on
+//[gist](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2). But the page cannot open anymore so that is why I have moved it here.
 
 ## Getting Started
 
