@@ -99,13 +99,13 @@ Also install nodejs's package manager npm
     sudo apt install npm
 
 
+#### From the following, all dependencies to run the environment is installed. We can now clone this project and run our code.
 
 
-
-ssssssssssssssssss
 ## Running the tests
 
-Explain how to run the automated tests for this system
+**Important**: Wasm-pack with wasm-bindgen allows or to create one 1 working environment at a time.
+To run code
 
 ### Sample Tests
 
@@ -119,45 +119,14 @@ Checks if the best practices and the right coding style has been used.
 
     Give an example
 
-## Deployment
-
-Add additional notes to deploy this on a live system
-
-## Built With
-
-  - [Contributor Covenant](https://www.contributor-covenant.org/) - Used
-    for the Code of Conduct
-  - [Creative Commons](https://creativecommons.org/) - Used to choose
-    the license
-
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code
-of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [Semantic Versioning](http://semver.org/) for versioning. For the versions
-available, see the [tags on this
-repository](https://github.com/PurpleBooth/a-good-readme-template/tags).
 
 ## Authors
 
-  - **Billie Thompson** - *Provided README Template* -
-    [PurpleBooth](https://github.com/PurpleBooth)
+  - **K.AOUADI** :[link](https://github.com/kaouadi)
+  - **Manish Naresh Gondhkar**
 
-See also the list of
-[contributors](https://github.com/PurpleBooth/a-good-readme-template/contributors)
-who participated in this project.
 
 ## License
 
-This project is licensed under the [CC0 1.0 Universal](LICENSE.md)
-Creative Commons License - see the [LICENSE.md](LICENSE.md) file for
-details
-
-## Acknowledgments
-
-  - Hat tip to anyone whose code is used
-  - Inspiration
-  - etc
+This project is licensed under [MIT](LICENSE.md)
+Creative Commons License - see the [LICENSE.md](LICENSE.md) file for details
